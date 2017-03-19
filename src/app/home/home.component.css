@@ -1,1 +1,20 @@
 /*styles for home content only*/
+.container {
+  background-color: white!important;
+}
+td {
+  padding-right: 0!important;
+  padding-left: 0!important;
+}
+.no-padding {
+  padding: 0!important;
+}
+.no-margin {
+  margin: 0!important;
+}
+.no-margin td {
+  border: 0!important;
+}
+.text-bottom {
+  paddin-bottom: 0!important;
+}

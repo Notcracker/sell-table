@@ -1,37 +1,59 @@
-<div>
-  <h1 x-large class="sample-content">Your Content Here</h1>
-
-  <hr>
-
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
+<div class="jumbotron">
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Фото</th>
+          <th>Наименование/характеристики</th>
+          <th>Артикул/Штрих-код</th>
+          <th>Торговые точки</th>
+          <th>Цена</th>
+          <th>Остатки</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data">
+          <th>
+            <img src={{item.picUrl}} alt="test">
+          </th>
+          <th>
+            <h4>{{item.name.name}}</h4>
+            <small style="color:grey"><i>{{item.name.content}}</i> {{' ' + item.name.weight + ' ' + item.name.size}}</small>
+          </th>
+          <td><b>{{item.vendor_code.vendor_code}}</b>
+            <div style="color:grey">
+              {{item.vendor_code.barcode}}
+            </div>
+          </td>
+          <td class="no-padding">
+            <table class="table table-striped no-margin">
+              <tbody>
+                <tr *ngFor="let point of item.sell_points">
+                  <td>{{point}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td class="no-padding">
+            <table class="table table-striped no-margin">
+              <tbody>
+                <tr *ngFor="let price of item.prices">
+                  <td>{{price}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td class="no-padding">
+            <table class="table table-striped no-margin">
+              <tbody>
+                <tr *ngFor="let leftover of item.leftovers">
+                  <td>{{leftover}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-  <hr>
-
-  <div>
-    <h4>Local State</h4>
-
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
-
-      <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
-        autofocus>
-
-      <button>Submit Value</button>
-    </form>
-    <!--
-        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-        Rather than wiring up two-way data-binding ourselves with [value] and (input)
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
-      -->
-
-    <pre>this.localState = {{ localState | json }}</pre>
-
-  </div>
-
 </div>
